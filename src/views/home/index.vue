@@ -2,7 +2,7 @@
 <div>
     <span class="demonstration"><h2>欢迎访问会员管理系统</h2></span>
     <span class="date" style="float:right "><h2>{{time}}</h2></span>
-<img src="../../assets/13.png" style="width:100%;"/>
+<img src="../../assets/index.png" style="width:100%;"/>
    
 </div>
 
