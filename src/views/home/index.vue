@@ -32,7 +32,6 @@ import date from '../../date';
             // let ss =new Date(timeStamp).getSeconds() < 10? "0" + new Date(timeStamp).getSeconds(): new Date(timeStamp).getSeconds();
             // return year + "年" + month + "月" + date +"日"+" "+hh+":"+mm ;
             this.time = year + "年" + month + "月" + date +"日"+" "+hh+":"+mm ;
-            // console.log(this.nowTime);
         },
         // // 定时器函数
         nowTimes(){

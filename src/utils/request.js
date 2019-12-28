@@ -13,10 +13,6 @@ const request = axios.create({
     baseURL: process.env.VUE_APP_BASE_API,
     timeout: 5000
 });
-
-/* request.get('/jb.json').then(response => {
-    console.log(response.data)
-}) */
 const loading = {
         loadingInstance: null,
         //打开加载

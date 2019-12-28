@@ -178,7 +178,7 @@ data(){
        memberApi.getList().then(response=>{
          const resp =response.data
          this.list=resp.data
-         console.log(resp)
+  
        })
      }, */
      //每页显示条数改变后，被触发 val 是最新条数
@@ -198,7 +198,7 @@ data(){
        memberApi.search(this.currentPage,this.pageSize,this.searchMap).then(response=>{
          const resp =response.data
          this.list=resp.data.rows
-         console.log(this.list)
+
          this.total=resp.data.total
        })
      },
@@ -268,7 +268,6 @@ data(){
 
       //重置
      resetForm(formName){
-          console.log("重置",formName)
       //重置找 el-form-item 组件元素prop指定的字段名
         this.$refs[formName].resetFields();//清空
       },

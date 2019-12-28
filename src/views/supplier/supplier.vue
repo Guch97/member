@@ -223,11 +223,10 @@ export default {
        this.$refs[formName].validate(valid=>{
          //校验通过
          if(valid){
-           console.log(valid)
+   
            //提交表单
            supplierApi.addDate(this.pojo).then(response=>{
              const resp=response.data
-             console.log(resp)
              if(resp.flag){
                //新增成功 刷新列表数据
             this.fetchData()

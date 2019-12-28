@@ -138,7 +138,6 @@ data(){
        memberApi.getList().then(response=>{
          const resp =response.data
          this.list=resp.data
-         console.log(resp)
        })
      }, */
      //每页显示条数改变后，被触发 val 是最新条数

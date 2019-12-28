@@ -62,7 +62,6 @@ export default {
        })
     } //检验确认密码是否一致
      const validatePass=(rule, value, callback)=>{
-       console.log(value)
        //value为确认密码值
        if(value !==this.ruleForm.pass){
          callback(new Error("两次输入密码不一致"))
@@ -71,7 +70,7 @@ export default {
        }
      }
     return{
-      user:JSON.parse(localStorage.getItem("msm-user")),
+      user:this.$sotre.state.user.user,
       dialogFormVisible:false,
       ruleForm:{
         oldPass:"",
@@ -113,26 +112,32 @@ export default {
     },
     //推出系统
   handleLogout(){
-    logout(localStorage.getItem('msm-token')).then(response=>{           
-            const resp=response.data
-              if(resp.flag){
-                //退出成功 
-                //清除本地数据
-                localStorage.removeItem("msm-token")
-                localStorage.removeItem("msm-user")
-                 //回到登录页面
-                 this.$router.push("/login")
-              }else{
-                 this.$message({
-                message: '警告哦，这是一条警告消息',
+    this.$store.dispatch('Logout').then(response=>{
+      if(repsonse.flag){
+        this.$router.push("/login")
+      }else{
+          this.$message('失败')
+      }
+    })
+    // logout(localStorage.getItem('msm-token')).then(response=>{           
+    //         const resp=response.data
+    //           if(resp.flag){
+    //             //退出成功 
+    //             //清除本地数据
+    //             localStorage.removeItem("msm-token")
+    //             localStorage.removeItem("msm-use    this.$router.push("/login")r")
+    //              //回到登录页面
+    //          
+    //           }else{
+    //              this.$message({
+    //             message: '警告哦，这是一条警告消息',
                 
-                 })
-              }
-            })
+    //              })
+    //           }
+    //         })
           },
       //重置
      resetForm(formName){
-        
       //重置找 el-form-item 组件元素prop指定的字段名
         this.$refs[formName].resetFields();//清空
       },
@@ -140,9 +145,7 @@ export default {
       submitForm(formName){
          this.$refs[formName].validate(valid=>{
            if(valid){
-             console.log("校验成功")
              passwordApi.uppwd(this.user.id,this.ruleForm.checkPass).then(response=>{
-               console.log(this.user.id)
                const resp=response.data
                 this.$message({
                 message:resp.message,
@@ -153,9 +156,6 @@ export default {
                   this.handleLogout()
                   this.dialogFormVisible=false
               }
-
-
-
              })
            }else{
              return false
