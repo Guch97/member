@@ -1,10 +1,12 @@
 //路由守卫
 import router from "./router"
 import { getUserInfo } from "./api/login"
-import store from './store'
+import store from './store/index'
 
 router.beforeEach((to, from, next) => {
-   const token=store.state.user.token
+  //  const token=store.state.user.token
+  const token='admin-token'
+   console.log(token)
   //1.没有获取到token
     if (!token) {
         //不让访问，跳转加载登录页面
@@ -29,6 +31,7 @@ router.beforeEach((to, from, next) => {
                 next()
             } else {
                 //本地没有用户信息，通过token获取用户信息
+                console.log()
                 store.dispatch('GetUserInfo').then(response=>{
                   if(response.flag){
                       next()

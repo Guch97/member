@@ -110,7 +110,7 @@ export default {
           break;
         }
     },
-    //推出系统
+    //退出系统
   handleLogout(){
     this.$store.dispatch('Logout').then(response=>{
       if(repsonse.flag){

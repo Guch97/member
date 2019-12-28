@@ -5,7 +5,7 @@ import  {login,getUserInfo,logout}   from '../../api/login'
 const user={
   state: {
     token:getToken(),
-    user:getUser,
+    user:getUser(),
   },
   mutations: {
     SET_TOKEN(state,token){
@@ -23,6 +23,7 @@ const user={
       return new Promise((resolve,reject)=>{
           login(form.username.trim(),form.password).then(response=>{
             const resp=response.data  
+            console.log(resp)
             commit('SET_TOKEN',resp.data.token) 
             resolve(resp)
         }).catch(error=>{
@@ -41,14 +42,16 @@ const user={
            })
         })
       },
-    Logout({commit}){
+    Logout({commit,state}){
       return new Promise((resolve,reject)=>{
         logout(state.token).then(resposne=>{
           const resp=response.data
           commit('SET_TOKEN',null)
           commit('SET_USER',null)
+            removeToken()
             resolve(resp)
             }).catch(error=>{
+              reject(error)
           })
         })
       }  

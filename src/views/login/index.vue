@@ -45,13 +45,15 @@ export default {
       //验证
       this.$refs[formName].validate(valid => {
         if (valid) {
-          this.$store.dispatch('Login',this.ruleForm).then(response=>{
+          const pro=this.$store.dispatch('Login',this.ruleForm).then(response=>{
+            console.log(pro)
+            console.log(response)
             if(reponse.flag){
               this.$route.push('/')
             }
           }).catch(error=>{
             this.$message({
-              message:'失败',
+              message:'失败1111',
               type:'info'
             })
 

@@ -6,7 +6,8 @@ const USER_KEY='admin-user'
 //获取token
 
 export function getToken(){
-  return  localStorage.getItem(TOKEN_KEY)
+
+  return localStorage.getItem(TOKEN_KEY)
 }
 
 //保存token
