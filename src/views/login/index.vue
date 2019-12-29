@@ -9,7 +9,7 @@
     >
       <h2 class="login-title">会员管理系统</h2>
       <el-form-item label="账号" prop="username">
-        <el-input v-model="ruleForm.name"></el-input>
+        <el-input v-model="ruleForm.username"></el-input>
       </el-form-item>
       <el-form-item label="密码" prop="password">
         <el-input v-model="ruleForm.password"></el-input>
@@ -29,8 +29,8 @@ export default {
   data() {
     return {
       ruleForm: {
-        username: "",
-        password: ""
+        username:1,
+        password:''
       },
       rules: {
         password: [
@@ -45,18 +45,21 @@ export default {
       //验证
       this.$refs[formName].validate(valid => {
         if (valid) {
-          const pro=this.$store.dispatch('Login',this.ruleForm).then(response=>{
-            console.log(pro)
+        //  this.$store.dispatch('Login',this.ruleForm).then(response=>{
+        //    debugger
+        //    console.log(response)
+        //  })
+          this.$store.dispatch('Login',this.ruleForm).then(response=>{
             console.log(response)
-            if(reponse.flag){
-              this.$route.push('/')
+            console.log(response.flag)
+            if(response.flag){
+              this.$router.push("/")
             }
           }).catch(error=>{
             this.$message({
               message:'失败1111',
               type:'info'
             })
-
           })
           //表单数据提交给后台验证是否正确
           // login(this.ruleForm.username, this.ruleForm.password).then(

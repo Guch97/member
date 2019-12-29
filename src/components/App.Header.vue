@@ -6,12 +6,7 @@
    <span class="company">会员管理系统
    </span>
    </a>
-
-
    
-
-
-
  <el-dropdown @command="handleCommand">
       <span class="el-dropdown-link">
        {{user.name}}<i class="el-icon-arrow-down el-icon--right"></i>
@@ -70,7 +65,7 @@ export default {
        }
      }
     return{
-      user:this.$sotre.state.user.user,
+      user:this.$store.state.user.user,
       dialogFormVisible:false,
       ruleForm:{
         oldPass:"",
