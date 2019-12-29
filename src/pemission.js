@@ -5,7 +5,6 @@ import store from './store/index'
 router.beforeEach((to, from, next) => {
    const token=store.state.user.token
   // const token='admin-token'
-   console.log(token)
   //1.没有获取到token
     if (!token) {
         if (to.path != "/login") {
@@ -19,16 +18,13 @@ router.beforeEach((to, from, next) => {
             next()
           } else {
             const userInfo=store.state.user.user
-            console.log(userInfo)
             // const userInfo = localStorage.getItem("msm-user")
             if (userInfo) {
                 //本地获取到，则直接去目标路由
                 next()
             } else {
                 //本地没有用户信息，通过token获取用户信息
-                console.log('222222')
                 store.dispatch('GetUserInfo').then(response=>{
-                  console.log(response)
                   if(response.flag){
                       next()
                   }else{

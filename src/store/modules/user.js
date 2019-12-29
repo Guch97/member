@@ -22,7 +22,6 @@ const user={
   actions: {
     Login({commit},form){
       return new Promise((resolve,reject)=>{
-         console.log(form)
           login(form.username,form.password).then(response=>{
             const resp=response.data  
             commit('SET_TOKEN',resp.data.token)
@@ -34,10 +33,8 @@ const user={
     },
     GetUserInfo({commit,state}){
       return  new Promise((resolve,reject)=>{
-        console.log(state.token)
         getUserInfo(state.token).then(response=>{
           const respUser=response.data
-          console.log(respUser)
           commit('SET_USER',respUser.data)
             resolve(respUser)
            }).catch(error=>{

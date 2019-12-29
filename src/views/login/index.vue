@@ -45,13 +45,7 @@ export default {
       //验证
       this.$refs[formName].validate(valid => {
         if (valid) {
-        //  this.$store.dispatch('Login',this.ruleForm).then(response=>{
-        //    debugger
-        //    console.log(response)
-        //  })
           this.$store.dispatch('Login',this.ruleForm).then(response=>{
-            console.log(response)
-            console.log(response.flag)
             if(response.flag){
               this.$router.push("/")
             }
