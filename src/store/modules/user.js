@@ -44,7 +44,7 @@ const user={
       },
     Logout({commit,state}){
      return  new Promise((resolve,reject)=>{
-        logout(state.token).then(resposne=>{
+        logout(state.token).then(response=>{
           const resp=response.data
           commit('SET_TOKEN',null)
           commit('SET_USER',null)
