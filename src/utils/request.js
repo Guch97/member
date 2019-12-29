@@ -11,7 +11,7 @@ import { Message } from 'element-ui';
 
 const request = axios.create({
     baseURL: process.env.VUE_APP_BASE_API,
-    timeout: 5000
+    timeout: 10000
 });
 const loading = {
         loadingInstance: null,

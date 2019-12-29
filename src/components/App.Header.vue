@@ -108,7 +108,8 @@ export default {
     //退出系统
   handleLogout(){
     this.$store.dispatch('Logout').then(response=>{
-      if(repsonse.flag){
+      console.log(response)
+      if(response.flag){
         this.$router.push("/login")
       }else{
           this.$message('失败')
